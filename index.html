@@ -1,120 +1,268 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Météo MIUI - Humidité</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MiSans:wght@200;300;400;500;600&display=swap">
-  <style>
-    /* Reset global */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html, body { width:100%; height:100%; overflow:hidden; font-family:'MiSans',sans-serif; background:#000; color:#fff; }
-    #app { position:relative; width:100%; height:100%; overflow:hidden; touch-action:pan-y; }
-    .screen {
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      transition:transform .4s ease;
-      /* Position par défaut hors-écran à droite */
-      transform: translateX(100%);
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>App Cuisine - Accueil & Recherche</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  /* Background image & full screen */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0; padding: 0;
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    display: flex; justify-content: center; align-items: flex-start;
+    overflow-x: hidden;
+    animation: backgroundZoom 30s ease-in-out infinite alternate;
+  }
+
+  @keyframes backgroundZoom {
+    0% {background-size: 105%;}
+    100% {background-size: 115%;}
+  }
+
+  /* Overlay to darken bg */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
+  }
+
+  .container {
+    max-width: 480px;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+    background: rgba(255 255 255 / 0.85);
+    border-radius: 20px;
+    margin-top: 4rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: fadeSlideIn 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .bg, .overlay { position:absolute; top:0; left:0; width:100%; height:100%; }
-    .bg { background:linear-gradient(to bottom, #4facfe,#00f2fe); transition:background 1s ease; z-index:0; }
-    .overlay { background:rgba(0,0,0,.2); backdrop-filter:blur(24px); z-index:1; }
-    .header { position:absolute; top:calc(env(safe-area-inset-top)+16px); width:100%; text-align:center; z-index:2; }
-    .header .title { font-size:18px; font-weight:600; }
-    .main { position:absolute; top:30%; width:100%; text-align:center; z-index:2; user-select:none; }
-    .big { font-size:120px; font-weight:200; line-height:1; animation:fadeIn 1s ease; }
-    .sub { font-size:24px; font-weight:300; opacity:.9; margin-top:-12px; animation:fadeIn 1.2s ease; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
-    .tab-bar { position:absolute; bottom:0; left:0; width:100%; display:flex; background:rgba(0,0,0,.25); backdrop-filter:blur(16px); z-index:2; }
-    .tab { flex:1; text-align:center; padding:12px 0; font-size:14px; font-weight:500; cursor:pointer; user-select:none; position:relative; }
-    .tab.active { color:#4facfe; }
-    .tab.active::after { content:''; position:absolute; bottom:4px; left:30%; width:40%; height:2px; background:#4facfe; border-radius:1px; }
-  </style>
+  }
+
+  h1 {
+    color: #a0522d;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 2px 6px rgba(160, 82, 45, 0.35);
+    animation: textPop 0.7s ease forwards;
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  @keyframes textPop {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  form {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  input[type="search"] {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    font-size: 1.3rem;
+    border-radius: 30px;
+    border: 2.5px solid #a0522d;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 rgba(160,82,45,0);
+  }
+  input[type="search"]:focus {
+    border-color: #bf7300;
+    box-shadow: 0 0 15px 2px rgba(191,115,0,0.5);
+  }
+
+  ul.suggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: white;
+    border: 2px solid #a0522d;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    max-height: 180px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  ul.suggestions.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  ul.suggestions li {
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    color: #5a4231;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  ul.suggestions li:last-child {
+    border-bottom: none;
+  }
+  ul.suggestions li:hover,
+  ul.suggestions li.active {
+    background-color: #f2d8b3;
+    color: #a0522d;
+  }
+
+  button.search-btn {
+    display: none;
+  }
+
+  /* Scrollbar for suggestions */
+  ul.suggestions::-webkit-scrollbar {
+    width: 8px;
+  }
+  ul.suggestions::-webkit-scrollbar-thumb {
+    background: #a0522d;
+    border-radius: 10px;
+  }
+  ul.suggestions::-webkit-scrollbar-track {
+    background: #fff;
+  }
+</style>
 </head>
 <body>
-  <div id="app">
-    <!-- Screen 0: Weather -->
-    <section id="home" class="screen" style="transform: translateX(0%)">
-      <div class="bg" id="bgHome"></div>
-      <div class="overlay"></div>
-      <div class="header"><div class="title" id="loc">Ville</div></div>
-      <div class="main">
-        <div class="big" id="temp">--°C</div>
-        <div class="sub" id="desc">---</div>
-      </div>
-      <nav class="tab-bar">
-        <div class="tab active" data-screen="home">Météo</div>
-        <div class="tab" data-screen="humid">Humidité</div>
-      </nav>
-    </section>
-    <!-- Screen 1: Humidity -->
-    <section id="humid" class="screen">
-      <div class="bg" id="bgHumid"></div>
-      <div class="overlay"></div>
-      <div class="header"><div class="title">Humidité</div></div>
-      <div class="main">
-        <div class="big" id="humidityVal">--%</div>
-      </div>
-      <nav class="tab-bar">
-        <div class="tab" data-screen="home">Météo</div>
-        <div class="tab active" data-screen="humid">Humidité</div>
-      </nav>
-    </section>
+  <div class="container">
+    <h1>App Cuisine</h1>
+    <form id="searchForm" autocomplete="off">
+      <input type="search" id="searchInput" name="search" placeholder="Rechercher une recette..." aria-label="Recherche de recette"/>
+      <button type="submit" class="search-btn">Rechercher</button>
+      <ul id="suggestions" class="suggestions" hidden></ul>
+    </form>
   </div>
-  <div id="searchBar" style="position:absolute;top:16px;right:16px;z-index:3;">
-    <input id="cityInput" type="text" placeholder="Ville..." style="padding:6px;border-radius:8px;" />
-    <button id="searchBtn" style="padding:6px;border-radius:8px;background:rgba(255,255,255,.3);">OK</button>
-  </div>
-  <script>
-    // Navigation
-    let startX=0, current=0;
-    const tabs=document.querySelectorAll('.tab');
-    const screens=document.querySelectorAll('.screen');
-    function show(idx) {
-      screens.forEach((s,i)=>{
-        s.style.transform=`translateX(${(i-idx)*100}%)`;
-        s.style.zIndex=i===idx?3:1;
+
+<script>
+  const recipes = [
+    { nom: "Tartare de saumon", categorie: "Entrée", page: "tartardesaumon.html" },
+    { nom: "Saucisson brioché facile et rapide", categorie: "Entrée", page: "saucissonbrioché.html" },
+    { nom: "Gratin dauphinois", categorie: "Plat", page: "gratin.html" },
+    { nom: "Poulet basquaise", categorie: "Plat", page: "pouletbasquaise.html" },
+    { nom: "Tarte tatin", categorie: "Dessert", page: "tartetatin.html" }
+  ];
+
+  const searchInput = document.getElementById('searchInput');
+  const suggestions = document.getElementById('suggestions');
+  let activeIndex = -1;
+
+  function filterSuggestions(query) {
+    if (!query) return [];
+    const lower = query.toLowerCase();
+    return recipes.filter(r => r.nom.toLowerCase().includes(lower));
+  }
+
+  function renderSuggestions(list) {
+    suggestions.innerHTML = "";
+    if (list.length === 0) {
+      suggestions.hidden = true;
+      suggestions.classList.remove('show');
+      return;
+    }
+    list.forEach((item, idx) => {
+      const li = document.createElement('li');
+      li.textContent = `${item.nom} (${item.categorie})`;
+      li.dataset.index = idx;
+      li.addEventListener('click', () => {
+        window.location.href = item.page;
       });
-      tabs.forEach((t,i)=>t.classList.toggle('active',i===idx));
-      current=idx;
-    }
-    tabs.forEach((t,i)=>t.addEventListener('click',()=>show(i)));
-    const appEl=document.getElementById('app');
-    appEl.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
-    appEl.addEventListener('touchend',e=>{
-      const dx=e.changedTouches[0].clientX-startX;
-      if(dx>50 && current>0) show(current-1);
-      else if(dx<-50 && current<1) show(current+1);
+      suggestions.appendChild(li);
     });
-    // Fetch weather
-    const API='f570ba4a8945e02cc0cdf9bb166d14e1';
-    async function load(city) {
-      if(!city) return;
-      try{
-        const wRes=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${API}&lang=fr`);
-        const w=await wRes.json();
-        document.getElementById('loc').textContent=w.name;
-        document.getElementById('temp').textContent=Math.round(w.main.temp)+'°C';
-        document.getElementById('desc').textContent=w.weather[0].description;
-        document.getElementById('humidityVal').textContent=w.main.humidity+'%';
-        const map={Clear:['#4facfe','#00f2fe'],Clouds:['#757f9a','#d7dde8'],Rain:['#4B79A1','#283E51'],Snow:['#83a4d4','#b6fbff'],Mist:['#606c88','#3f4c6b']};
-        const c=w.weather[0].main;
-        ['bgHome','bgHumid'].forEach(id=>{
-          const el=document.getElementById(id);
-          const gr=map[c]||map.Clear;
-          el.style.background=`linear-gradient(to bottom, ${gr[0]}, ${gr[1]})`;
-        });
-      }catch(e){console.error(e)}
+    suggestions.hidden = false;
+    suggestions.classList.add('show');
+  }
+
+  searchInput.addEventListener('input', e => {
+    activeIndex = -1;
+    const filtered = filterSuggestions(e.target.value);
+    renderSuggestions(filtered);
+  });
+
+  searchInput.addEventListener('keydown', e => {
+    const items = suggestions.querySelectorAll('li');
+    if (suggestions.hidden || items.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIndex = (activeIndex + 1) % items.length;
+      updateActive();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+      updateActive();
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (activeIndex >= 0 && activeIndex < items.length) {
+        window.location.href = recipes.filter(r => r.nom.toLowerCase().includes(searchInput.value.toLowerCase()))[activeIndex].page;
+      } else {
+        // Si aucune suggestion active, recherche exacte
+        const exact = recipes.find(r => r.nom.toLowerCase() === searchInput.value.toLowerCase());
+        if (exact) {
+          window.location.href = exact.page;
+        } else {
+          alert("Aucune recette trouvée !");
+        }
+      }
     }
-    document.getElementById('searchBtn').addEventListener('click',()=>load(document.getElementById('cityInput').value));
-    document.getElementById('cityInput').addEventListener('keydown',e=>e.key==='Enter'&&load(e.target.value));
-    // Initial
-    show(0);
-    load('Paris');
-  </script>
+  });
+
+  function updateActive() {
+    const items = suggestions.querySelectorAll('li');
+    items.forEach((el, i) => {
+      el.classList.toggle('active', i === activeIndex);
+    });
+    if (activeIndex >= 0) {
+      items[activeIndex].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  document.getElementById('searchForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const val = searchInput.value.trim().toLowerCase();
+    const found = recipes.find(r => r.nom.toLowerCase() === val);
+    if (found) {
+      window.location.href = found.page;
+    } else {
+      alert("Aucune recette trouvée !");
+    }
+  });
+
+  // Clic hors de la zone suggère cache les suggestions
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#searchForm')) {
+      suggestions.hidden = true;
+      suggestions.classList.remove('show');
+    }
+  });
+</script>
 </body>
 </html>
