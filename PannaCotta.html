@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panna Cotta - Recette</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(145deg, #fff7f9, #ffe6ec);
+      color: #2c3e50;
+      max-width: 480px;
+      margin: auto;
+      padding: 2rem 1rem;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      color: #e84393;
+      animation: slideDown 0.6s ease forwards;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 1rem;
+      animation: slideDown 0.6s ease forwards;
+    }
+
+    .tags {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e84393;
+      color: white;
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      margin: 0.3rem;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .tag:hover {
+      background: #d63074;
+    }
+
+    h2 {
+      margin-top: 1.5rem;
+      color: #d63074;
+      border-bottom: 2px solid #e84393;
+      padding-bottom: 0.3rem;
+    }
+
+    ul.ingredients {
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.ingredients li {
+      margin-bottom: 0.5rem;
+    }
+
+    .time-info {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-weight: 600;
+    }
+
+    .time-info div {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    ol.steps {
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    ol.steps li {
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-retour {
+      display: block;
+      width: 100%;
+      margin: 2rem auto 0;
+      padding: 0.9rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #e84393, #fd79a8);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-retour:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(15px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Panna Cotta</h1>
+  <p class="subtitle">Pour 6 personnes</p>
+
+  <div class="tags">
+    <span class="tag">20 min</span>
+    <span class="tag">Très facile</span>
+    <span class="tag">Bon marché</span>
+  </div>
+
+  <h2>Ingrédients</h2>
+  <ul class="ingredients">
+    <li>2 feuilles de gélatine</li>
+    <li>50 g de sucre</li>
+    <li>1 gousse de vanille (ou extrait)</li>
+    <li>50 cl de crème fraîche liquide</li>
+  </ul>
+
+  <div class="time-info">
+    <div><strong>Total</strong><br>20 min</div>
+    <div><strong>Préparation</strong><br>10 min</div>
+    <div><strong>Repos</strong><br>-</div>
+    <div><strong>Cuisson</strong><br>10 min</div>
+  </div>
+
+  <h2>Étapes</h2>
+  <ol class="steps">
+    <li>Faire ramollir les feuilles de gélatine dans de l’eau froide.</li>
+    <li>Mettre la crème, le sucre et la vanille dans une casserole, puis faire frémir.</li>
+    <li>Dès l’ébullition, retirer du feu et incorporer la gélatine égouttée. Bien mélanger.</li>
+    <li>Verser dans des coupelles, laisser refroidir, puis placer au réfrigérateur pour faire prendre.</li>
+    <li>Ajouter un coulis de fruits rouges juste avant de servir.</li>
+  </ol>
+
+  <a href="javascript:history.back()" class="btn-retour">Retour</a>
+
+</body>
+</html>
