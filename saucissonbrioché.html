@@ -34,6 +34,30 @@
     font-weight: bold;
     margin-bottom: 1rem;
   }
+
+  .btn-retour {
+      display: block;
+      width: 70%;
+      margin: 2rem auto 0;
+      padding: 0.9rem 1.5rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #d35400, #e67e22);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-retour:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
 </style>
 </head>
 <body>
@@ -66,6 +90,8 @@
     <li>Cuire au four à thermostat 5 pendant 40 mn.</li>
   </ol>
 </div>
+
+<a href="javascript:history.back()" class="btn-retour">Retour</a>
 
 </body>
 </html>
