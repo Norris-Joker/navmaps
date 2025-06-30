@@ -20,12 +20,14 @@
     text-align: center;
   }
   h1 {
-    font-weight: 700;
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-    color: #a0522d;
-    text-shadow: 0 2px 6px rgba(160, 82, 45, 0.25);
-  }
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-top: 5rem; /* Ajouté */
+  margin-bottom: 1rem;
+  color: #a0522d;
+  text-shadow: 0 2px 6px rgba(160, 82, 45, 0.25);
+}
+
   p.intro {
     font-size: 1.1rem;
     margin-bottom: 2rem;
@@ -58,34 +60,62 @@
     font-weight: 500;
     color: #8b6f58;
   }
+  .back-btn {
+    display: inline-block;
+    margin: 1.5rem 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #a0522d;
+    background: transparent;
+    border: 2px solid #a0522d;
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    position: absolute;
+    top: 0.1rem;
+    left: 1rem;
+  }
+  .back-btn:hover {
+    background-color: #a0522d;
+    color: white;
+  }
+
   @media (max-width: 500px) {
-    .container { margin-top: 1rem; }
+    .container { margin-top: 3rem; }
     h1 { font-size: 2rem; }
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>Entrées</h1>
-  <p class="intro">Découvrez toutes les recettes d'entrées disponibles dans l'application.</p>
-  
-  <div class="recipe-list" id="recipeList">
-    <!-- Entrées listées ici -->
+  <a href="index.html" class="back-btn">← Retour</a>
+  <div class="container">
+    <h1>Entrées</h1>
+    <p class="intro">Découvrez toutes les recettes d'entrées disponibles dans l'application.</p>
+    
+    <div class="recipe-list" id="recipeList">
+      <!-- Entrées listées ici -->
+    </div>
   </div>
-</div>
 
 <script>
   const entrees = [
     {
       nom: "Tartare de saumon",
-      description: "Recette inratable et fraîche pour 4 personnes",
+      description: "Recette inratable pour 4 personnes",
       page: "tartardesaumon.html"
     },
     {
-      nom: "Saucisson brioché facile et rapide",
-      description: "Une entrée chaude et gourmande pour 6 personnes",
+      nom: "Saucisson brioché",
+      description: "Une entrée pour 4 personnes",
       page: "saucissonbrioché.html"
-    }
+    },
+    {
+      nom: "Gaspacho (Espagnol)",
+      description: "Une entrée rafraichissante pour 4 personnes",
+      page: "gaspacho.html"
+    },
   ];
 
   const container = document.getElementById('recipeList');
