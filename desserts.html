@@ -11,6 +11,7 @@
     margin: 0; padding: 0; min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(135deg, #f9f5f0 0%, #fefcf9 100%);
+    background: url('https://mrwallpaper.com/images/hd/enjoy-a-delicious-dessert-with-your-iphone-x3cae9u69phoe0nq.jpg') no-repeat center center fixed;
     color: #5a4231;
   }
   .container {
@@ -19,19 +20,28 @@
     padding: 0 1.5rem;
     text-align: center;
   }
+
+  .header-box {
+  background: rgba(110, 103, 103, 0.637);
+  border-radius: 50px;
+  padding: 1rem 1rem;
+  margin: 1rem auto 2rem; /* ↓ On passe de 3rem à 1rem pour rapprocher du haut */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
   h1 {
   font-weight: 700;
   font-size: 2.4rem;
   margin-top: 5rem; /* Ajouté */
   margin-bottom: 1rem;
-  color: #a0522d;
+  color: #962da0;
   text-shadow: 0 2px 6px rgba(160, 82, 45, 0.25);
 }
 
   p.intro {
     font-size: 1.1rem;
     margin-bottom: 2rem;
-    color: #8b6f58;
+    color: #ffffff;
   }
   .recipe-list {
     display: flex;
@@ -52,7 +62,7 @@
   }
   .recipe-card h2 {
     margin: 0;
-    color: #a0522d;
+    color: #962da0;
     font-size: 1.5rem;
   }
   .recipe-card p {
@@ -65,16 +75,16 @@
     margin: 1.5rem 0 0 1rem;
     font-size: 1rem;
     font-weight: 600;
-    color: #a0522d;
+    color: #962da0;
     background: transparent;
-    border: 2px solid #a0522d;
+    border: 2px solid #962da0;
     border-radius: 30px;
     padding: 0.5rem 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
     position: absolute;
-    top: 0.1rem;
+    top: -1.2rem;
     left: 1rem;
   }
   .back-btn:hover {
@@ -91,8 +101,10 @@
 <body>
   <a href="index.html" class="back-btn">← Retour</a>
   <div class="container">
+    <div class="header-box">
     <h1>Desserts</h1>
     <p class="intro">Découvrez toutes les recettes d'entrées disponibles dans l'application.</p>
+    </div>
     
     <div class="recipe-list" id="recipeList">
       <!-- Entrées listées ici -->
