@@ -1,163 +1,180 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>App Cuisine - Accueil & Recherche</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>App Cuisine</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  /* Background image & full screen */
-  body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0; padding: 0;
-    min-height: 100vh;
-    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-    background-size: cover;
-    display: flex; justify-content: center; align-items: flex-start;
-    overflow-x: hidden;
-    animation: backgroundZoom 30s ease-in-out infinite alternate;
-  }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      animation: backgroundZoom 30s ease-in-out infinite alternate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  @keyframes backgroundZoom {
-    0% {background-size: 105%;}
-    100% {background-size: 115%;}
-  }
+    @keyframes backgroundZoom {
+      0% { background-size: 105%; }
+      100% { background-size: 115%; }
+    }
 
-  /* Overlay to darken bg */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: -1;
-  }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
 
-  .container {
-    max-width: 480px;
-    width: 100%;
-    padding: 2rem 1.5rem;
-    box-sizing: border-box;
-    background: rgba(255 255 255 / 0.85);
-    border-radius: 20px;
-    margin-top: 4rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    animation: fadeSlideIn 1s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
-  }
+    .container {
+      width: 90vw;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      margin: auto;
+      padding: 2rem 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: fadeSlideIn 1s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      box-sizing: border-box;
+    }
 
-  @keyframes fadeSlideIn {
-    to {
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: #a0522d;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 6px rgba(160, 82, 45, 0.35);
+    }
+
+    .category-bar {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-bar button {
+      background-color: #f2d8b3;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-weight: bold;
+      color: #a0522d;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .category-bar button:hover {
+      background-color: #e6be96;
+    }
+
+    form {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    input[type="search"] {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      border: 2.5px solid #a0522d;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="search"]:focus {
+      border-color: #bf7300;
+      box-shadow: 0 0 15px 2px rgba(191,115,0,0.5);
+    }
+
+    ul.suggestions {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: white;
+      border: 2px solid #a0522d;
+      border-top: none;
+      border-radius: 0 0 20px 20px;
+      max-height: 180px;
+      overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    ul.suggestions.show {
       opacity: 1;
       transform: translateY(0);
+      pointer-events: auto;
     }
-  }
 
-  h1 {
-    color: #a0522d;
-    font-weight: 700;
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    text-shadow: 0 2px 6px rgba(160, 82, 45, 0.35);
-    animation: textPop 0.7s ease forwards;
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  @keyframes textPop {
-    to {
-      opacity: 1;
-      transform: scale(1);
+    ul.suggestions li {
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+      color: #5a4231;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
-  }
 
-  form {
-    position: relative;
-    margin-bottom: 2rem;
-  }
+    ul.suggestions li:hover,
+    ul.suggestions li.active {
+      background-color: #f2d8b3;
+      color: #a0522d;
+    }
 
-  input[type="search"] {
-    width: 100%;
-    padding: 0.9rem 1.2rem;
-    font-size: 1.3rem;
-    border-radius: 30px;
-    border: 2.5px solid #a0522d;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 0 rgba(160,82,45,0);
-  }
-  input[type="search"]:focus {
-    border-color: #bf7300;
-    box-shadow: 0 0 15px 2px rgba(191,115,0,0.5);
-  }
+    ul.suggestions::-webkit-scrollbar {
+      width: 8px;
+    }
 
-  ul.suggestions {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: white;
-    border: 2px solid #a0522d;
-    border-top: none;
-    border-radius: 0 0 20px 20px;
-    max-height: 180px;
-    overflow-y: auto;
-    position: absolute;
-    width: 100%;
-    z-index: 10;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  ul.suggestions.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
+    ul.suggestions::-webkit-scrollbar-thumb {
+      background: #a0522d;
+      border-radius: 10px;
+    }
 
-  ul.suggestions li {
-    padding: 0.7rem 1.2rem;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-    color: #5a4231;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.25s ease, color 0.25s ease;
-  }
-  ul.suggestions li:last-child {
-    border-bottom: none;
-  }
-  ul.suggestions li:hover,
-  ul.suggestions li.active {
-    background-color: #f2d8b3;
-    color: #a0522d;
-  }
-
-  button.search-btn {
-    display: none;
-  }
-
-  /* Scrollbar for suggestions */
-  ul.suggestions::-webkit-scrollbar {
-    width: 8px;
-  }
-  ul.suggestions::-webkit-scrollbar-thumb {
-    background: #a0522d;
-    border-radius: 10px;
-  }
-  ul.suggestions::-webkit-scrollbar-track {
-    background: #fff;
-  }
-</style>
+    ul.suggestions::-webkit-scrollbar-track {
+      background: #fff;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>App Cuisine</h1>
+
+    <div class="category-bar">
+      <button id="btn-entrees">Entrées</button>
+      <button id="btn-plats">Plats</button>
+      <button id="btn-desserts">Desserts</button>
+    </div>
+
     <form id="searchForm" autocomplete="off">
       <input type="search" id="searchInput" name="search" placeholder="Rechercher une recette..." aria-label="Recherche de recette"/>
-      <button type="submit" class="search-btn">Rechercher</button>
+      
       <ul id="suggestions" class="suggestions" hidden></ul>
     </form>
   </div>
@@ -166,9 +183,10 @@
   const recipes = [
     { nom: "Tartare de saumon", categorie: "Entrée", page: "tartardesaumon.html" },
     { nom: "Saucisson brioché facile et rapide", categorie: "Entrée", page: "saucissonbrioché.html" },
-    { nom: "Gratin dauphinois", categorie: "Plat", page: "gratin.html" },
-    { nom: "Poulet basquaise", categorie: "Plat", page: "pouletbasquaise.html" },
-    { nom: "Tarte tatin", categorie: "Dessert", page: "tartetatin.html" }
+    { nom: "Tiramisu l'Original", categorie: "Dessert", page: "tiramisu.html" },
+    { nom: "Gaspacho Express", categorie: "Entrée", page: "gaspacho.html" },
+    { nom: "moelleux au chocolat", categorie: "Dessert", page: "moelleuxchocolat.html" },
+    { nom: "Panna Cota", categorie: "Dessert", page: "PannaCotta.html" }
   ];
 
   const searchInput = document.getElementById('searchInput');
@@ -224,7 +242,6 @@
       if (activeIndex >= 0 && activeIndex < items.length) {
         window.location.href = recipes.filter(r => r.nom.toLowerCase().includes(searchInput.value.toLowerCase()))[activeIndex].page;
       } else {
-        // Si aucune suggestion active, recherche exacte
         const exact = recipes.find(r => r.nom.toLowerCase() === searchInput.value.toLowerCase());
         if (exact) {
           window.location.href = exact.page;
@@ -256,12 +273,22 @@
     }
   });
 
-  // Clic hors de la zone suggère cache les suggestions
   document.addEventListener('click', e => {
     if (!e.target.closest('#searchForm')) {
       suggestions.hidden = true;
       suggestions.classList.remove('show');
     }
+  });
+
+  // ✅ Redirection boutons catégorie
+  document.getElementById('btn-entrees').addEventListener('click', () => {
+    window.location.href = 'entrees.html';
+  });
+  document.getElementById('btn-plats').addEventListener('click', () => {
+    window.location.href = 'plats.html';
+  });
+  document.getElementById('btn-desserts').addEventListener('click', () => {
+    window.location.href = 'desserts.html';
   });
 </script>
 </body>
