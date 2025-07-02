@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calamars à l'armoricaine - Recette</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #f8fbfc, #e3f2f7);
+      color: #2c3e50;
+      padding: 2rem 1rem;
+      max-width: 480px;
+      margin: auto;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      animation: slideDown 0.7s ease forwards;
+    }
+
+    .subtitle {
+      font-weight: 500;
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 1rem;
+      animation: slideDown 0.7s ease forwards;
+      animation-delay: 0.1s;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .tags {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.7s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      margin: 0.3rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .tag:hover {
+      background: #c0392b;
+      transform: scale(1.05);
+    }
+
+    h2 {
+      color: #c0392b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #c0392b;
+      padding-bottom: 0.3rem;
+    }
+
+    ul.ingredients {
+      list-style-type: disc;
+      padding-left: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.ingredients li {
+      margin-bottom: 0.5rem;
+    }
+
+    .time-info {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #34495e;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .time-info div {
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    ol.steps {
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    ol.steps li {
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-retour {
+      display: block;
+      width: 100%;
+      margin: 2rem auto 0;
+      padding: 0.9rem 1.5rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #16a085, #1abc9c);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-retour:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calamars à l'armoricaine</h1>
+  <p class="subtitle">Pour 4 personnes</p>
+
+  <div class="tags">
+    <span class="tag">1 heure 15 min</span>
+    <span class="tag">Facile</span>
+    <span class="tag">Moyen</span>
+  </div>
+
+  <h2>Ingrédients</h2>
+  <ul class="ingredients">
+    <li>2 oignons</li>
+    <li>2 boîtes de tomates concassées (celles de 425 ml)</li>
+    <li>1 petit verre de cognac</li>
+    <li>Poivre</li>
+    <li>Sel</li>
+    <li>1 kg de calamar</li>
+    <li>2 gousses d' ail</li>
+    <li>½ l de vin blanc</li>
+    <li>huile d'olive</li>
+    <li>cuillère à soupe de homard concentrée (facultatif)</li>
+  </ul>
+
+  <div class="time-info">
+    <div><strong>Total</strong><br>1 heure 15 min</div>
+    <div><strong>Préparation</strong><br>15 min</div>
+    <div><strong>Repos</strong><br>-</div>
+    <div><strong>Cuisson</strong><br>1 heure</div>
+  </div>
+
+  <h2>Étapes</h2>
+  <ol class="steps">
+    <li>Enlever la fine peau qui recouvre le corps. Couper les tentacules, couper le corps en rondelles.</li>
+    <li>Couper les oignons en 2, puis en fines rondelles.</li>
+    <li>Hacher l'ail.</li>
+    <li>Dans une cocotte, faire chauffer l'huile, faire revenir les calamars pendant 2 mn en remuant de temps en temps.</li>
+    <li>Les enlever de la cocotte puis, à feu doux, faire fondre les oignons sans qu'ils prennent couleur. Ajouter l'ail à la fin.</li>
+    <li>Remettre les calamars dans la cocotte, flamber avec le Cognac, ajouter les tomates concassées.</li>
+    <li>Saler, poivrer, mouiller avec le vin blanc.</li>
+    <li>Poursuivre la cuisson à feu doux pendant près d'une heure en laissant le couvercle. Un peu avant la fin on peut l'enlever si on préfère une sauce un peu épaisse.</li>
+    <li>On peut aussi à ce moment-là ajouter la bisque de homard si l'on veut un peu corser la sauce.</li>
+  </ol>
+
+  <a href="javascript:history.back()" class="btn-retour">Retour</a>
+
+</body>
+</html>
