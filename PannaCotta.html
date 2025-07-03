@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(145deg, #fff7f9, #ffe6ec);
+      background-image: url(cnf_pannacotta_1portrait02ok.jpg);
       color: #2c3e50;
       max-width: 480px;
       margin: auto;
@@ -24,6 +24,14 @@
       opacity: 0;
     }
 
+    .container {
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
     @keyframes fadeIn {
       to { opacity: 1; }
     }
@@ -140,7 +148,7 @@
   </style>
 </head>
 <body>
-
+<div class="container">
   <h1>Panna Cotta</h1>
   <p class="subtitle">Pour 6 personnes</p>
 
@@ -175,6 +183,6 @@
   </ol>
 
   <a href="javascript:history.back()" class="btn-retour">Retour</a>
-
+  </div>
 </body>
 </html>
