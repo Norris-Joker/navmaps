@@ -170,6 +170,10 @@
       <button id="btn-entrees">Entrées</button>
       <button id="btn-plats">Plats</button>
       <button id="btn-desserts">Desserts</button>
+      
+    </div>
+    <div class="category-bar">
+    <button id="btn-boissons">Boissons</button>
     </div>
 
     <form id="searchForm" autocomplete="off">
@@ -281,7 +285,7 @@
     }
   });
 
-  // ✅ Redirection boutons catégorie
+  
   document.getElementById('btn-entrees').addEventListener('click', () => {
     window.location.href = 'entrees.html';
   });
@@ -290,6 +294,9 @@
   });
   document.getElementById('btn-desserts').addEventListener('click', () => {
     window.location.href = 'desserts.html';
+  });
+  document.getElementById('btn-boissons').addEventListener('click', () => {
+    window.location.href = 'boissons.html';
   });
 </script>
 </body>
