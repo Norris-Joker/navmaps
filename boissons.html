@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boissons - Recettes de Cuisine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  body, html {
+    margin: 0; padding: 0; min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f9f5f0 0%, #fefcf9 100%);
+    color: #5a4231;
+    background-image: url(boissons.jpg);
+
+  }
+  .container {
+    max-width: 480px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .header-box {
+  background: rgba(110, 103, 103, 0.637);
+  border-radius: 50px;
+  padding: 1rem 1rem;
+  margin: 1rem auto 2rem; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+  h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-top: 5rem; 
+  margin-bottom: 1rem;
+  color: #a5c11a;
+  text-shadow: 0 2px 6px rgba(160, 82, 45, 0.25);
+}
+
+  p.intro {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+  }
+  .recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .recipe-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 5px 10px rgba(160, 82, 45, 0.12);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  .recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(160, 82, 45, 0.25);
+  }
+  .recipe-card h2 {
+    margin: 0;
+    color: #a5c11a;
+    font-size: 1.5rem;
+  }
+  .recipe-card p {
+    margin: 0.3rem 0 0;
+    font-weight: 500;
+    color: #8b6f58;
+  }
+  .back-btn {
+    display: inline-block;
+    margin: 1.5rem 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #a5c11a;
+    background: transparent;
+    border: 2px solid #a5c11a;
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    position: absolute;
+    top: -1.2rem;
+    left: 1rem;
+  }
+  .back-btn:hover {
+    background-color: #a0522d;
+    color: white;
+  }
+
+  @media (max-width: 500px) {
+    .container { margin-top: 3rem; }
+    h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Retour</a>
+  <div class="container">
+    <div class="header-box">
+    <h1>Boissons</h1>
+    <p class="intro">Découvrez toutes les recettes de boissons disponibles dans l'application.</p>
+    </div>
+    <div class="recipe-list" id="recipeList">
+    </div>
+  </div>
+
+<script>
+  const entrees = [
+    {
+      nom: "Smoothie à la banane et au miel",
+      description: "Recette inratable pour 4 personnes",
+      page: "smoothie_bannane.html"
+    },
+    {
+      nom: "Café frappé (café glacé grec)",
+      description: "Une boisson pour 4 personnes",
+      page: "café_frappé.html"
+    },
+    {
+      nom: "Smoothie aux fruits rouges",
+      description: "Une boisson rafraichissante pour 4 personnes",
+      page: "smoothie_fruitsrouges.html"
+    },
+  ];
+
+  const container = document.getElementById('recipeList');
+
+  entrees.forEach(entree => {
+    const card = document.createElement('div');
+    card.className = 'recipe-card';
+    card.tabIndex = 0;
+    card.innerHTML = `
+      <h2>${entree.nom}</h2>
+      <p>${entree.description}</p>
+    `;
+    card.onclick = () => {
+      window.location.href = entree.page;
+    };
+    card.onkeypress = e => {
+      if (e.key === 'Enter') {
+        window.location.href = entree.page;
+      }
+    };
+    container.appendChild(card);
+  });
+</script>
+</body>
+</html>
