@@ -1,128 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tiramisu (recette originale)</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tiramisu (recette originale) - Recette</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
-  body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0; padding: 0;
-    min-height: 100vh;
-    background: url('https://images.unsplash.com/photo-1558021212-51c1e175e78f?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-    background-size: cover;
-    color: #4a3c31;
-    overflow-y: scroll;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(250, 240, 230, 0.85);
-    z-index: -1;
-  }
-
-  main {
-    max-width: 700px;
-    margin: 3rem auto 5rem;
-    background: rgba(255 255 255 / 0.9);
-    padding: 2.5rem 3rem;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  }
 
-  h1 {
-    font-size: 2.8rem;
-    color: #a0522d;
-    margin-bottom: 0.3rem;
-    font-weight: 700;
-    text-align: center;
-    text-shadow: 0 2px 5px rgba(160,82,45,0.3);
-  }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-image: url(tira.jpg);
+      color: #2c3e50;
+      padding: 2rem 1rem;
+      max-width: 480px;
+      margin: auto;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
 
-  .subtitle {
-    text-align: center;
-    font-style: italic;
-    font-weight: 600;
-    color: #7a5a3c;
-    margin-bottom: 2rem;
-  }
+    .container {
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
-  .info {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    font-weight: 600;
-    color: #8a6b49;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-  }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-  section {
-    margin-bottom: 2.5rem;
-  }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      animation: slideDown 0.7s ease forwards;
+    }
 
-  h2 {
-    font-size: 1.8rem;
-    border-bottom: 3px solid #a0522d;
-    padding-bottom: 0.3rem;
-    margin-bottom: 1rem;
-    color: #7a4a1d;
-  }
+    .subtitle {
+      font-weight: 500;
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 1rem;
+      animation: slideDown 0.7s ease forwards;
+      animation-delay: 0.1s;
+    }
 
-  ul.ingredients {
-    list-style: none;
-    padding-left: 0;
-    font-size: 1.1rem;
-    color: #5a4532;
-  }
-  ul.ingredients li {
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  ul.ingredients li strong {
-    font-weight: 700;
-  }
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-  ol.steps {
-    padding-left: 1.2rem;
-    font-size: 1.1rem;
-    color: #5a4532;
-    line-height: 1.5;
-  }
-  ol.steps li {
-    margin-bottom: 1.2rem;
-  }
+    .tags {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.7s ease forwards;
+      animation-delay: 0.2s;
+    }
 
-  footer {
-    text-align: center;
-    color: #a0522d;
-    font-style: italic;
-    font-weight: 600;
-  }
+    .tag {
+      display: inline-block;
+      background: #db7434;
+      color: white;
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      margin: 0.3rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-  .btn-retour {
+    .tag:hover {
+      background: #db7434;
+      transform: scale(1.05);
+    }
+
+    h2 {
+      color: #db7434;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #db7434;
+      padding-bottom: 0.3rem;
+    }
+
+    ul.ingredients {
+      list-style-type: disc;
+      padding-left: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.ingredients li {
+      margin-bottom: 0.5rem;
+    }
+
+    .time-info {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #34495e;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .time-info div {
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    ol.steps {
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    ol.steps li {
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-retour {
       display: block;
-      width: 70%;
+      width: 100%;
       margin: 2rem auto 0;
       padding: 0.9rem 1.5rem;
       text-align: center;
       font-size: 1rem;
       font-weight: 600;
       color: white;
-      background: linear-gradient(135deg, #d35400, #e67e22);
+      background: linear-gradient(135deg, #db7434, #d35400);
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -136,62 +149,54 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-  /* Responsive */
-  @media (max-width: 480px) {
-    main {
-      margin: 2rem 1rem 3rem;
-      padding: 1.8rem 1.5rem;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-  }
-</style>
+  </style>
 </head>
 <body>
-<main>
-  <h1>Tiramisu (recette originale)</h1>
-  <p class="subtitle">15 min ● très facile ● bon marché</p>
+  <div class="container">
+  <h1>Tiramisu (recette originale) : la recette inratable</h1>
+  <p class="subtitle">Pour 4 personnes</p>
 
-  <div class="info">
-    <div><strong>4 personnes</strong></div>
+  <div class="tags">
+    <span class="tag">4 heures et 15 min</span>
+    <span class="tag">Très facile</span>
+    <span class="tag">Bon marché</span>
   </div>
 
-  <section>
-    <h2>Ingrédients</h2>
-    <ul class="ingredients">
-      <li><strong>100 g</strong> de sucre roux</li>
-      <li><strong>24</strong> biscuits à la cuillère</li>
-      <li><strong>30 g</strong> de cacao amer</li>
-      <li><strong>3</strong> œufs</li>
-      <li><strong>1 sachet</strong> de sucre vanillé</li>
-      <li><strong>250 g</strong> de mascarpone</li>
-      <li><strong>50 cl</strong> de café noir non sucré</li>
-    </ul>
-  </section>
+  <h2>Ingrédients</h2>
+  <ul class="ingredients">
+    <li>100 g de sucre roux</li>
+    <li>24 biscuits à la cuillère</li>
+    <li>30 g de cacao amer</li>
+    <li>3 œufs</li>
+    <li>1 sachet de sucre vanillé</li>
+    <li>250 g de mascarpone</li>
+    <li>50 cl de café noir non sucré</li>
+  </ul>
 
-  <section>
-    <h2>Préparation</h2>
-    <p><strong>Temps total :</strong> 15 min</p>
-    <p><strong>Préparation :</strong> 15 min</p>
-    <p><strong>Repos :</strong> -</p>
-    <p><strong>Cuisson :</strong> -</p>
+  <div class="time-info">
+    <div><strong>Total</strong><br>4 heures et 15 min</div>
+    <div><strong>Préparation</strong><br>15 min</div>
+    <div><strong>Repos</strong><br>4 heures</div>
+    <div><strong>Cuisson</strong><br>-</div>
+  </div>
 
-    <ol class="steps">
-      <li>Séparer les blancs des jaunes d'œufs.</li>
-      <li>Mélanger les jaunes avec le sucre roux et le sucre vanillé.</li>
-      <li>Ajouter le mascarpone au fouet.</li>
-      <li>Monter les blancs en neige et les incorporer délicatement à la spatule au mélange précédent. Réserver.</li>
-      <li>Mouiller les biscuits dans le café rapidement avant d'en tapisser le fond du plat.</li>
-      <li>Recouvrir d'une couche de crème au mascarpone puis répéter l'opération en alternant couche de biscuits et couche de crème en terminant par cette dernière.</li>
-      <li>Saupoudrer de cacao.</li>
-      <li>Mettre au réfrigérateur 4 heures minimum puis déguster frais.</li>
-    </ol>
-  </section>
+  <h2>Étapes</h2>
+  <ol class="steps">
+    <li>Séparer les blancs des jaunes d'œufs.</li>
+    <li>Mélanger les jaunes avec le sucre roux et le sucre vanillé.</li>
+    <li>Ajouter le mascarpone au fouet.</li>
+    <li>Monter les blancs en neige et les incorporer délicatement à la spatule au mélange précédent. Réserver.</li>
+    <li>Mouiller les biscuits dans le café rapidement avant d'en tapisser le fond du plat.</li>
+    <li>Recouvrir d'une couche de crème au mascarpone puis répéter l'opération en alternant couche de biscuits et couche de crème en terminant par cette dernière.</li>
+    <li>Saupoudrer de cacao.</li>
+    <li>Mettre au réfrigérateur 4 heures minimum puis déguster frais.</li>
+  </ol>
 
-  <footer>
-    Bonne dégustation ! 🍰☕
-  </footer>
-</main>
-
-<a href="javascript:history.back()" class="btn-retour">Retour</a>
-
+  <a href="javascript:history.back()" class="btn-retour">Retour</a>
+  </div>
 </body>
 </html>
