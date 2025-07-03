@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tartare de Saumon - Recette</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-image: url(Smoothie-banane-yaourt.jpg);
+      color: #2c3e50;
+      padding: 2rem 1rem;
+      max-width: 480px;
+      margin: auto;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+     .container {
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      animation: slideDown 0.7s ease forwards;
+    }
+
+    .subtitle {
+      font-weight: 500;
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 1rem;
+      animation: slideDown 0.7s ease forwards;
+      animation-delay: 0.1s;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .tags {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.7s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbdb34;
+      color: white;
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      margin: 0.3rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .tag:hover {
+      background: #dbdb34;
+      transform: scale(1.05);
+    }
+
+    h2 {
+      color: #dbdb34;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #dbdb34;
+      padding-bottom: 0.3rem;
+    }
+
+    ul.ingredients {
+      list-style-type: disc;
+      padding-left: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.ingredients li {
+      margin-bottom: 0.5rem;
+    }
+
+    .time-info {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #34495e;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .time-info div {
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    ol.steps {
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    ol.steps li {
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-retour {
+      display: block;
+      width: 100%;
+      margin: 2rem auto 0;
+      padding: 0.9rem 1.5rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #dbdb34, #798b14);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-retour:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Smoothie à la banane et au miel</h1>
+  <p class="subtitle">Pour 4 personnes</p>
+
+  <div class="tags">
+    <span class="tag">5 min</span>
+    <span class="tag">Très facile</span>
+    <span class="tag">Bon marché</span>
+  </div>
+
+  <h2>Ingrédients</h2>
+  <ul class="ingredients">
+    <li>4 bananes bien mûre</li>
+    <li>4 cuillères à café de miel</li>
+    <li>100 cl de lait demi-écrémé</li>
+    <li>2 citrons pressé</li>
+  </ul>
+
+  <div class="time-info">
+    <div><strong>Total</strong><br>5 min</div>
+    <div><strong>Préparation</strong><br>5 min</div>
+    <div><strong>Repos</strong><br>-</div>
+    <div><strong>Cuisson</strong><br>-</div>
+  </div>
+
+  <h2>Étapes</h2>
+  <ol class="steps">
+    <li>Tranchez la banane en gros morceaux, puis placez-la dans le mixeur avec le miel, le citron et le lait.</li>
+    <li>Mixez jusqu'à l'obtention d'un liquide épais.</li>
+  </ol>
+
+  <a href="javascript:history.back()" class="btn-retour">Retour</a>
+  </div>
+</body>
+</html>
