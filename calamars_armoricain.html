@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(135deg, #f8fbfc, #e3f2f7);
+      background-image: url(Sauce-a-l-armoricaine-avec-des-calamars.jpg);
       color: #2c3e50;
       padding: 2rem 1rem;
       max-width: 480px;
@@ -24,6 +24,14 @@
       opacity: 0;
     }
 
+    .container {
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
     @keyframes fadeIn {
       to { opacity: 1; }
     }
@@ -126,7 +134,7 @@
       font-size: 1rem;
       font-weight: 600;
       color: white;
-      background: linear-gradient(135deg, #16a085, #1abc9c);
+      background: linear-gradient(135deg, #f77c018a, #ff000088);
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -147,7 +155,7 @@
   </style>
 </head>
 <body>
-
+<div class="container">
   <h1>Calamars à l'armoricaine</h1>
   <p class="subtitle">Pour 4 personnes</p>
 
@@ -192,6 +200,6 @@
   </ol>
 
   <a href="javascript:history.back()" class="btn-retour">Retour</a>
-
+  </div>
 </body>
 </html>
