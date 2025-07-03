@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(135deg, #fff4f1, #ffe0db);
+      background-image: url(Moelleux-au-chocolat.jpg);
       color: #2c3e50;
       padding: 2rem 1rem;
       max-width: 480px;
@@ -23,6 +23,15 @@
       animation: fadeIn 1s ease-out forwards;
       opacity: 0;
     }
+
+    .container {
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
     @keyframes fadeIn {
       to { opacity: 1; }
@@ -147,12 +156,12 @@
   </style>
 </head>
 <body>
-
+<div class="container">
   <h1>Véritable moelleux au chocolat</h1>
   <p class="subtitle">Pour 6 personnes</p>
 
   <div class="tags">
-    <span class="tag">40 min</span>
+    <span class="tag">45 min</span>
     <span class="tag">Très facile</span>
     <span class="tag">Bon marché</span>
   </div>
@@ -168,10 +177,10 @@
   </ul>
 
   <div class="time-info">
-    <div><strong>Total</strong><br>40 min</div>
+    <div><strong>Total</strong><br>45 min</div>
     <div><strong>Préparation</strong><br>10 min</div>
     <div><strong>Repos</strong><br>-</div>
-    <div><strong>Cuisson</strong><br>30 min</div>
+    <div><strong>Cuisson</strong><br>35 min</div>
   </div>
 
   <h2>Étapes</h2>
@@ -188,6 +197,6 @@
   </ol>
 
   <a href="javascript:history.back()" class="btn-retour">Retour</a>
-
+  </div>
 </body>
 </html>
