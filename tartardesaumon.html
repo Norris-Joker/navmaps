@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(135deg, #f0f4f8, #e6ecf3);
+      background-image: url(tartare-saumon-avocat-3.jpg);
       color: #2c3e50;
       padding: 2rem 1rem;
       max-width: 480px;
@@ -23,6 +23,15 @@
       animation: fadeIn 1s ease-out forwards;
       opacity: 0;
     }
+
+    .container {
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
     @keyframes fadeIn {
       to { opacity: 1; }
@@ -59,7 +68,7 @@
 
     .tag {
       display: inline-block;
-      background: #3498db;
+      background: #db7434;
       color: white;
       border-radius: 30px;
       padding: 0.4rem 1rem;
@@ -70,15 +79,15 @@
     }
 
     .tag:hover {
-      background: #2c82c9;
+      background: #db7434;
       transform: scale(1.05);
     }
 
     h2 {
-      color: #2980b9;
+      color: #db7434;
       margin-top: 1.5rem;
       margin-bottom: 0.5rem;
-      border-bottom: 2px solid #2980b9;
+      border-bottom: 2px solid #db7434;
       padding-bottom: 0.3rem;
     }
 
@@ -126,7 +135,7 @@
       font-size: 1rem;
       font-weight: 600;
       color: white;
-      background: linear-gradient(135deg, #e67e22, #d35400);
+      background: linear-gradient(135deg, #db7434, #d35400);
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -147,12 +156,12 @@
   </style>
 </head>
 <body>
-
+  <div class="container">
   <h1>Tartare de saumon : la recette inratable</h1>
   <p class="subtitle">Pour 4 personnes</p>
 
   <div class="tags">
-    <span class="tag">10 min</span>
+    <span class="tag">2 heures et 10 min</span>
     <span class="tag">Très facile</span>
     <span class="tag">Moyen</span>
   </div>
@@ -168,9 +177,9 @@
   </ul>
 
   <div class="time-info">
-    <div><strong>Total</strong><br>10 min</div>
+    <div><strong>Total</strong><br>2 heures et 10 min</div>
     <div><strong>Préparation</strong><br>10 min</div>
-    <div><strong>Repos</strong><br>-</div>
+    <div><strong>Repos</strong><br>2 heures</div>
     <div><strong>Cuisson</strong><br>-</div>
   </div>
 
@@ -182,6 +191,6 @@
   </ol>
 
   <a href="javascript:history.back()" class="btn-retour">Retour</a>
-
+  </div>
 </body>
 </html>
